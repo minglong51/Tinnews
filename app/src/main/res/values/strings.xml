@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">TinnNews</string>
+    <!-- Existing items ... -->
+    <string name="title_home">Home</string>
+    <string name="title_save">Save</string>
+    <string name="title_search">Search</string>
+    <string name="app_name">Tinnews</string>
+    <!-- Existing items ... -->
 </resources>
