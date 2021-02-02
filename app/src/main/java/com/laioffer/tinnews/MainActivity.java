@@ -32,42 +32,7 @@ public class MainActivity extends AppCompatActivity {
         navController = navHostFragment.getNavController();
         NavigationUI.setupWithNavController(navView, navController);
         NavigationUI.setupActionBarWithNavController(this, navController);
-        NewsApi api = RetrofitClient.newInstance(this).create(NewsApi.class);
-        /*同步操作不可以， 会有NetworkOnMainThreadException
-        * try{
-        *   newsApi.getTopHeadlines("us").execute();
-        * } catch(IOException e){
-        *   e.printStackTrace();
-        * }
-        *   use another thread
-        * new Thread(new Runnable(){
-        *   @Override
-        *   public void run(){
-        *       try{
-        *           NewResponse newsResponse = newApi.getTopHeadLines("us").execute().body();
-        *           log.d("getTopHeadlines", nesResponse.toString());
-        *       }catch(IOException e){
-        *            e.printStackTrace();
-        *       }
-        *   }
-        * }).start();
-        * */
-        Log.d("getTopHeadLines", Thread.currentThread().getName());
-        api.getTopHeadlines("US").enqueue(new Callback<NewsResponse>() {
-            @Override
-            public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
-                if (response.isSuccessful()) {
-                    Log.d("getTopHeadlines", response.body().toString());
-                } else {
-                    Log.d("getTopHeadlines", response.toString());
-                }
-            }
 
-            @Override
-            public void onFailure(Call<NewsResponse> call, Throwable t) {
-                Log.d("getTopHeadlines", t.toString());
-            }
-        });
     }
 
    @Override
