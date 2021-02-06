@@ -46,6 +46,7 @@ public class SearchNewsAdapter extends RecyclerView.Adapter<SearchNewsAdapter.Se
         Article article = articles.get(position);
         holder.favoriteImageView.setImageResource(R.drawable.ic_favorite_24dp);
         holder.itemTitleTextView.setText(article.title);
+        //get image from url (cache image)
         Picasso.get().load(article.urlToImage).into(holder.itemImageView);
     }
 
@@ -55,7 +56,8 @@ public class SearchNewsAdapter extends RecyclerView.Adapter<SearchNewsAdapter.Se
     }
 
 
-    //3.SearchNewsViewHolder:
+    //3.SearchNewsViewHolder: reduce binding by using this holder
+    //binding only when create
     public static class SearchNewsViewHolder extends RecyclerView.ViewHolder {
 
         ImageView favoriteImageView;
